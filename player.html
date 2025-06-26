@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    html,body{
+      margin:0;
+      height:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(location.search);
+      const src = params.get('src');
+      const w = params.get('w') || 300;
+      const h = params.get('h') || 300;
+      if (!src) {
+        document.body.innerHTML = '<p style="font-family:Arial, sans-serif;">Missing <code>?src=</code> parameter.</p>';
+        return;
+      }
+      const player = document.createElement('lottie-player');
+      player.src = src;
+      player.background = 'transparent';
+      player.speed = '1';
+      player.style.width = w + 'px';
+      player.style.height = h + 'px';
+      player.loop = true;
+      player.autoplay = true;
+      document.body.appendChild(player);
+    });
+  </script>
+</head>
+<body></body>
+</html>
