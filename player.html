@@ -17,7 +17,9 @@
       const params = new URLSearchParams(location.search);
       const src = params.get('src');
       const w = params.get('w') || 300;
-      const h = params.get('h') || 300;
+      const h = params.get('h') |
+        const scale = params.get('scale') || 1;
+        | 300;
       if (!src) {
         document.body.innerHTML = '<p style="font-family:Arial, sans-serif;">Missing <code>?src=</code> parameter.</p>';
         return;
@@ -26,7 +28,9 @@
       player.src = src;
       player.background = 'transparent';
       player.speed = '1';
-      player.style.width = w + 'px';
+      player.style.width = w + 'p
+        player.style.transform = `scale(${scale})`;
+player.style.transformOrigin = 'center';x';
       player.style.height = h + 'px';
       player.loop = true;
       player.autoplay = true;
